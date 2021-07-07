@@ -1,0 +1,48 @@
+<!-- ngIf Demo-->
+
+<div *ngIf="items.length > 0; then itemsList else noItems"></div> 
+<!-- if we did not give semi-colon after condition, before then keyword, still works -->
+<ng-template #itemsList>
+    List of Items : 
+    <ul *ngFor="let item of items">
+        <li>{{item}}</li>
+    </ul>
+</ng-template>
+<ng-template #noItems>
+    Items not Present
+</ng-template>
+
+<!-- ngSwitch Demo -->
+
+<ul>
+    <li class="btn btn-primary" [class.active] = "viewMode == 'map'"><a (click)="viewMode = 'map'">Map View</a></li>
+    <li class="btn btn-primary"[class.active] = "viewMode == 'list'"><a (click)="viewMode = 'list'">List View</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Map Content</div>
+    <div *ngSwitchCase="'list'">List Content</div>
+    <div *ngSwitchDefault>Default Content</div>
+</div>
+
+<!-- ngFor -->
+<button class="btn btn-primary" (click)="insert()">ADD Course</button>
+<ul *ngFor="let course of courses; index as i; even as isEven">
+    <li>
+        {{i}} {{ course.name }}
+        <button class="btn btn-danger" (click)="delete(course)">DELETE</button> &nbsp;
+        <button class="btn btn-success" (click)="update(course)">UPDATE</button>
+    </li>
+    
+    <!-- <span *ngIf="isEven">(EVEN)</span>
+    <span *ngIf="!isEven">(ODD)</span> -->
+</ul>
+
+<button class="btn btn-primary" (click)="loadData()">Load DATA</button>
+<ul>
+    <li *ngFor="let dummyData of data; trackBy:trackData">{{dummyData.name}}</li>
+</ul>
+
+<!-- Not working -->
+<!-- <div>{{teachers?.info.name}}</div> -->
+<!-- <div *ngIf="teachers.info">{{teachers.info.name}}</div> -->
+
