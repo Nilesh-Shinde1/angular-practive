@@ -9,4 +9,8 @@ export class InputFormComponent {
 
   log(value){ console.log(value); }
 
-}
+  onSubmit(formObj){
+    console.log(formObj);
+    console.log("form value",formObj.value);
+  }
+} 

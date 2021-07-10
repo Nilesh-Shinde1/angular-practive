@@ -1,17 +1,17 @@
-<form>
+<form #formObj="ngForm" (submit)="onSubmit(formObj)">
     <div class="form-group">
         <label for="name">Name</label>
-        <input required minlength="3" pattern="Nilesh" ngModel name="name" #ngModelValue="ngModel" (change)="log(ngModelValue)" id="name" type="text" class="form-control">
-        <div class="alert alert-danger" *ngIf="ngModelValue.touched && ngModelValue.invalid">
+        <input required minlength="3" pattern="Nilesh" ngModel name="name" #ngModelObj="ngModel" (change)="log(ngModelObj)" id="name" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="ngModelObj.touched && ngModelObj.invalid">
             Name should be valid
-            <div *ngIf="ngModelValue.errors.minlength">Name should be min {{ ngModelValue.errors.minlength.requiredLength }} char</div>
-            <div *ngIf="ngModelValue.errors.pattern">Name should match pattern</div>
-            <!-- <div *ngIf="ngModelValue.errors.required">Name is Required</div> -->
+            <div *ngIf="ngModelObj.errors.minlength">Name should be min {{ ngModelObj.errors.minlength.requiredLength }} char</div>
+            <div *ngIf="ngModelObj.errors.pattern">Name should match pattern</div>
+            <!-- <div *ngIf="ngModelObj.errors.required">Name is Required</div> -->
         </div> 
     </div>
     <div class="form-group">
         <label for="comment">Comment</label>
-        <textarea id="comment" class="form-control"></textarea>
+        <textarea id="comment" class="form-control" ngModel name="comment"></textarea>
     </div>
     <button class="btn btn-primary">Submit</button>
 </form>
