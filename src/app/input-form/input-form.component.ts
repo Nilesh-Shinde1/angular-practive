@@ -11,6 +11,11 @@ export class InputFormComponent {
     {id:1, name:"phone"},
     {id:2, name:"email"}
   ];
+
+  gender = [
+    {id:1, name:"Male"},
+    {id:2, name:"Female"}
+  ];
   
   log(value){ console.log(value); }
 
